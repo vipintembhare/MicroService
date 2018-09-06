@@ -19,8 +19,9 @@ public class TriviaQuestionArrayAccess implements TriviaQuestionAccessible{
 
 	@Override
 	public TriviaQuestion getQuestionByIndex(long index) {
-		if((int) index < this.questionList.size()) {
-			return questionList.get((int)index);
+		int iIndex= (int)index;
+		if(iIndex>=0 && iIndex < this.questionList.size()) {
+			return questionList.get(iIndex);
 		}
 		return null;
 	}
@@ -62,7 +63,10 @@ public class TriviaQuestionArrayAccess implements TriviaQuestionAccessible{
 	public List<TriviaQuestion> getSpecifiedQuestionList(long... ids) {
 		List <TriviaQuestion> returnList=new ArrayList<>();
 		for (long currentId : ids) {
-			returnList.add(getQuestionById(currentId));
+			TriviaQuestion question=getQuestionById(currentId);
+			if(null != question) {
+			returnList.add(question);
+			}
 		}
  		return returnList;
 	}
@@ -88,7 +92,7 @@ public class TriviaQuestionArrayAccess implements TriviaQuestionAccessible{
 		);
 		
 		questionList.add(new TriviaBuilder()
-				.id(0)
+				.id(1)
 				.question("Where is Taj Mahal located?")
 				.answerA("Agartala")
 				.answerB("Agra")
@@ -101,7 +105,7 @@ public class TriviaQuestionArrayAccess implements TriviaQuestionAccessible{
 				);
 		
 		questionList.add(new TriviaBuilder()
-				.id(0)
+				.id(2)
 				.question("Who can among the following options?")
 				.answerA("Stone")
 				.answerB("Man")

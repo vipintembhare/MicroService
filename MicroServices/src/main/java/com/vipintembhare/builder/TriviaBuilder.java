@@ -5,7 +5,7 @@ import com.vipintembhare.TriviaQuestion;
 
 public class TriviaBuilder {
 
-	 private long id;
+	 private long id=-1;
 	 private String question;
 	 private String answerA;
 	 private String answerB;
@@ -16,14 +16,14 @@ public class TriviaBuilder {
 	 private Date lastUpdated;
 	 
 	public TriviaQuestion build() {
-		if((id>0) 
+		if((id<0) 
 				|| ("".equals(this.question) || this.question.trim().isEmpty())
-				|| ("".equals(this.answerA) || this.answerA.trim().isEmpty())
-				|| ("".equals(this.answerB) || this.answerB.trim().isEmpty())
-				|| ("".equals(this.answerC) || this.answerC.trim().isEmpty())
-				|| ("".equals(this.answerD) || this.answerD.trim().isEmpty())
-				|| ("".equals(this.correctAnswer) || this.correctAnswer.trim().isEmpty())
-				|| ("".equals(this.hint) || this.hint.trim().isEmpty())
+				|| (null == this.answerA) || this.answerA.trim().isEmpty()
+				|| (null == this.answerB) || this.answerB.trim().isEmpty()
+				|| (null == this.answerC) || this.answerC.trim().isEmpty()
+				|| (null == this.answerD) || this.answerD.trim().isEmpty()
+				|| (null == this.correctAnswer) || this.correctAnswer.trim().isEmpty()
+				|| (null == this.hint)    || this.hint.trim().isEmpty()
 				|| (null==this.lastUpdated)
 				) {
 			throw new IllegalArgumentException("TriviaQuestion is not fully initialized");
